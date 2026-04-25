@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wedding Invitation</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<div id="loading">
+    <div class="loading-content">
+        <p class="loading-title" data-i18n="loading_title"></p>
+
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+
+        <p class="loading-percent" id="loadingPercent">0%</p>
+    </div>
+</div>
+
+<audio id="bgm" loop>
+    <source src="assets/audio/music.mp3">
+</audio>
+
+<div class="tap-zone left-zone"></div>
+<div class="tap-zone right-zone"></div>
+
+<div class="dots" id="dots"></div>
+
+<div class="progress-bar">
+    <div class="progress" id="progress"></div>
+</div>
+
+<!-- TOP CONTROLS -->
+<div class="top-controls">
+
+    <!-- LEFT -->
+    <div class="controls-left">
+        <button id="langToggleBtn" class="control-btn" >
+            <img id="langIcon" src="assets/images/language.png">
+        </button>
+        <!-- <button id="langToggleBtn" class="control-btn">💬</button> -->
+    </div>
+
+    <!-- RIGHT -->
+    <div class="controls-right">
+        <button id="musicToggle" class="control-btn">▶</button>
+        <button id="menuToggleBtn" class="control-btn">☰</button>
+    </div>
+
+</div>
+
+<!-- 🌐 LANGUAGE MENU -->
+<div class="lang-menu" id="langMenu">
+    <div class="lang-item" data-lang="en">English</div>
+    <div class="lang-item" data-lang="id">Bahasa</div>
+    <div class="lang-item" data-lang="jp">日本語</div>
+</div>
+
+<!-- MENU -->
+<div class="floating-menu" id="floatingMenu">
+    <div class="menu-item" data-page="3"><span>𓁇𓏌</span><span data-i18n="menu_bride"></span></div>
+    <div class="menu-item" data-page="4"><span>𓏌𓁆</span><span data-i18n="menu_groom"></span></div>
+    <div class="menu-item" data-page="5"><span>◴</span><span data-i18n="menu_event"></span></div>
+    <div class="menu-item" data-page="6"><span>☎︎</span><span data-i18n="menu_rsvp"></span></div>
+    <div class="menu-item" data-page="7"><span>⛶</span><span data-i18n="menu_gallery"></span></div>
+    <div class="menu-item" data-page="8"><span>✐</span><span data-i18n="menu_wish"></span></div>
+    <div class="menu-item" data-page="9"><span>𖠩</span><span data-i18n="menu_gift"></span></div>
+</div>
+
+<div class="story-container">
+<div class="story-track">
+
+<!-- COVER -->
+<section class="page cover">
+<div class="content">
+
+<p class="subtitle" data-i18n="subtitle"></p>
+<h1>Rizka & Zaqi</h1>
+<p class="date" data-i18n="date_cover"></p>
+
+<p class="invite-text" data-i18n="invite_text"></p>
+
+<p id="guestName" class="guest"></p>
+
+<p class="note" data-i18n="note"></p>
+
+<button id="openBtn" data-i18n="open"></button>
+
+</div>
+</section>
+
+<!-- COUPLE -->
+<section class="page couple">
+<div class="content">
+
+<p class="subtitle" data-i18n="subtitle"></p>
+<h1>Rizka & Zaqi</h1>
+<p class="date" data-i18n="date_main"></p>
+
+<div id="countdown" class="countdown"></div>
+
+<p class="scroll-text" data-i18n="swipe"></p>
+
+<div class="swipe-hand">
+<img src="assets/images/swipe-hand.png">
+</div>
+
+</div>
+</section>
+
+<!-- QUOTE -->
+<section class="page quote">
+<div class="content quote-content">
+
+<p class="quote-text" data-i18n="quote_text"></p>
+<p class="quote-source" data-i18n="quote_source"></p>
+
+</div>
+</section>
+
+<!-- BRIDE -->
+<section class="page bride">
+<div class="content person-content">
+
+<p class="subtitle" data-i18n="bride_title"></p>
+<h1>Rizka Putri Adriani</h1>
+<p class="desc" data-i18n="bride_desc"></p>
+
+</div>
+</section>
+
+<!-- GROOM -->
+<section class="page groom">
+<div class="content person-content">
+
+<p class="subtitle" data-i18n="groom_title"></p>
+<h1>Fajar Muhammad Noor Rozaqi</h1>
+<p class="desc" data-i18n="groom_desc"></p>
+
+</div>
+</section>
+
+<!-- EVENT -->
+<section class="page event">
+<div class="content event-content">
+
+<p class="subtitle" data-i18n="event_title" style="
+    margin-top: 30px;"></p>
+<h1 data-i18n="date_main"></h1>
+
+<!-- <div class="event-card">
+<h2 data-i18n="akad"></h2>
+<p class="time">06:30 - 09:00 WIB</p>
+</div>
+
+<div class="event-card">
+<h2 data-i18n="reception"></h2>
+<p class="time">10:30 - 13:00 WIB</p>
+</div> -->
+
+<div class="event-card" id="akadCard">
+  <h2 data-i18n="akad"></h2>
+  <p class="time">06:30 - 09:00 WIB</p>
+</div>
+
+<div class="event-card" id="resepsiCard">
+  <h2 data-i18n="reception"></h2>
+  <p class="time">10:30 - 13:00 WIB</p>
+</div>
+
+<div class="location">
+<p class="subtitle" data-i18n="location"></p>
+<h2>Aminta Hall</h2>
+<p>
+Jalan Tol Tahi Bonar Simatupang Kav.10<br>
+Pondok Pinang, Kebayoran Lama<br>
+Jakarta Selatan
+</p>
+</div>
+
+<div class="event-actions">
+<a id="calendarBtn" target="_blank" data-i18n="save_date"></a>
+<a href="https://maps.app.goo.gl/Z2XT3bcWfXsZh7TFA" target="_blank" data-i18n="open_maps"></a>
+</div>
+
+</div>
+</section>
+
+<!-- RSVP -->
+<section class="page rsvp">
+<div class="content rsvp-content" id="rsvpContainer">
+
+<p class="subtitle" data-i18n="rsvp"></p>
+<h2 class="rsvp-title" data-i18n="rsvp_title"></h2>
+<p class="rsvp-desc" data-i18n="rsvp_desc"></p>
+
+<div class="rsvp-block">
+<p class="label" data-i18n="your_name"></p>
+<p id="rsvpName" class="guest"></p>
+</div>
+
+<div class="rsvp-block">
+<p class="label" data-i18n="will_attend"></p>
+
+<div class="choice-group" id="attendanceGroup">
+<div class="choice active" data-value="Yes" data-i18n="attending"></div>
+<div class="choice" data-value="No" data-i18n="not_attending"></div>
+</div>
+</div>
+
+<!-- <div class="rsvp-block">
+<p class="label" data-i18n="pax"></p>
+<div class="choice-group" id="paxGroup"></div>
+</div> -->
+
+<div class="rsvp-block" id="paxBlock">
+  <p class="label" data-i18n="pax"></p>
+  <div class="choice-group" id="paxGroup"></div>
+</div>
+
+<button id="rsvpSubmitBtn" data-i18n="confirm"></button>
+
+</div>
+</section>
+
+<!-- MOMENTS -->
+<section class="page moments">
+<div class="content moments-content">
+
+<p class="subtitle" data-i18n="moments" style="
+    margin-top: 30px;"></p>
+<p class="moments-desc" data-i18n="moments_desc"></p>
+
+<div class="gallery" id="gallery"></div>
+
+</div>
+</section>
+
+<!-- WISHES -->
+<section class="page wishes">
+<div class="content wishes-content">
+
+<p class="subtitle" data-i18n="wishes"></p>
+
+<p class="wishes-intro" data-i18n="wishes_intro"></p>
+
+<div class="wish-form">
+
+<input id="wishName" data-i18n-placeholder="placeholder_name" />
+
+<div class="wish-input-row">
+<textarea id="wishMessage" maxlength="300" data-i18n-placeholder="placeholder_message"></textarea>
+<button id="wishSubmit">➤</button>
+</div>
+
+<small id="charCount">0 / 300</small>
+
+</div>
+
+<div class="wish-list" id="wishList"></div>
+
+</div>
+</section>
+
+<!-- GIFT -->
+<section class="page gift">
+<div class="content gift-content">
+
+<!-- <p class="subtitle" data-i18n="gift" style="margin-top: 30px;"></p> -->
+
+<!-- <h2 class="gift-title" data-i18n="gift_title"></h2> -->
+<p class="subtitle" data-i18n="gift_title"></p>
+
+<p class="gift-desc" data-i18n="gift_desc"></p>
+
+<div class="gift-card">
+<p class="bank-name">Bank Central Asia (BCA)</p>
+<p class="account-name">Rizka Putri Adriani</p>
+<!-- <button class="copy-btn" data-i18n="copy"></button> -->
+ <div class="copy-row">
+                            <span id="bcaNumber">2670032330</span>
+                            <button class="copy-btn" onclick="copyText(this,'bcaNumber')">Copy</button>
+                        </div>
+</div>
+
+<div class="gift-card">
+<p class="bank-name">Bank Negara Indonesia (BNI)</p>
+<p class="account-name">Fajar Muhammad Noor Rozaqi</p>
+<!-- <button class="copy-btn" data-i18n="copy"></button> -->
+ <div class="copy-row">
+                            <span id="bniNumber">0857731945</span>
+                            <button class="copy-btn" onclick="copyText(this,'bniNumber')">Copy</button>
+                        </div>
+</div>
+
+<div class="gift-card">
+<p class="bank-name" data-i18n="send_gift"></p>
+<p class="account-name">Rizka Putri Adriani</p>
+ <div class="copy-row">
+                            <span id="giftAddress">
+                                Jl. Nenas No.304B Blok A Cinere, Kec. Cinere, Kota Depok, Jawa Barat 16514
+                            </span>
+                            <button class="copy-btn" onclick="copyText(this,'giftAddress')">Copy</button>
+                        </div>
+</div>
+
+</div>
+</section>
+
+<!-- CLOSING -->
+<section class="page closing">
+<div class="content closing-content">
+
+<p class="subtitle" data-i18n="thank_you" style="margin-top: 50px;"></p>
+
+<p class="closing-text" data-i18n="closing_1"></p>
+<p class="closing-text" data-i18n="closing_2"></p>
+<p class="closing-text" data-i18n="closing_3"></p>
+<p class="closing-text" data-i18n="closing_4"></p>
+
+<h3 class="closing-name">Rizka & Zaqi</h3>
+<p class="closing-family" data-i18n="closing_family"></p>
+
+<p class="closing-credit">
+(© 2026) Built with lots of 💛 for Rizka<br>
+by Zaqi & ChatGPT hehe
+</p>
+
+</div>
+</section>
+
+</div>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const GUEST_ID = urlParams.get("id");
+</script>
+
+<script src="assets/js/lang.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/swipe.js"></script>
+<script src="assets/js/app.js"></script>
+
+<div id="photoModal" class="photo-modal">
+
+    <span class="close-btn" id="closeModal">✕</span>
+
+    <div class="modal-nav left" id="prevBtn">‹</div>
+    <img id="modalImg" />
+    <div class="modal-nav right" id="nextBtn">›</div>
+
+    <div class="counter" id="photoCounter"></div>
+    <p class="photo-caption" id="photoCaption"></p>
+
+</div>
+
+</body>
+</html>
