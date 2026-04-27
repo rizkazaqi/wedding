@@ -689,7 +689,7 @@ async function loadWishes() {
 
   list.innerHTML = "";
 
-  data.slice(0, 20).forEach(w => {
+  data.slice(0, 200).forEach(w => {
 
     const div = document.createElement("div");
     div.classList.add("wish-item");
